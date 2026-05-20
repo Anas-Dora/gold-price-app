@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912101123222",
+    "project_id": "goldpriceapp-63d52",
+    "storage_bucket": "goldpriceapp-63d52.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912101123222:android:d029294a05fd690b6c8eb7",
+        "android_client_info": {
+          "package_name": "com.example.goldpriceapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlDP4PdZaZbxqEzBK5UU8-E-0m-iWd3WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Gold prices are public — anyone can read
+    match /preise/{docId} {
+      allow read: if true;
+
+      // Only authenticated users can change prices
+      // (add Firebase Auth to your app to enforce this properly)
+      allow write: if true;
+    }
+
+  }
+}
