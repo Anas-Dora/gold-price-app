@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../theme/app_colors.dart';
 import '../../viewmodels/gold_price_viewmodel.dart';
 import 'widgets/price_card.dart';
 import 'widgets/editable_price_card.dart';
-
-const Color _kPrimary = Color(0xFF765A00);
-const Color _kBackground = Color(0xFFFFF8F1);
-const Color _kSurface = Color(0xFFFFF8F1);
-const Color _kOnSurface = Color(0xFF1F1B14);
-const Color _kOnSurfaceVariant = Color(0xFF4D4637);
-const Color _kOutlineVariant = Color(0xFFD0C5B1);
-const Color _kError = Color(0xFFBA1A1A);
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,22 +56,22 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _kBackground,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        backgroundColor: _kSurface,
+        backgroundColor: AppColors.surface,
         elevation: 0,
         scrolledUnderElevation: 0,
         surfaceTintColor: Colors.transparent,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Container(height: 1, color: _kOutlineVariant),
+          child: Container(height: 1, color: AppColors.outlineVariant),
         ),
         title: const Text(
           'Durrah Juwelier',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color: _kPrimary,
+            color: AppColors.primary,
           ),
         ),
         actions: [
@@ -88,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen>
               turns: _spinAnimation,
               child: IconButton(
                 onPressed: _refresh,
-                icon: const Icon(Icons.refresh, color: _kPrimary),
+                icon: const Icon(Icons.refresh, color: AppColors.primary),
                 style: IconButton.styleFrom(shape: const CircleBorder()),
               ),
             ),
@@ -100,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen>
           // Initial loading — no data yet
           if (vm.state == ViewState.loading && !vm.hasData) {
             return const Center(
-              child: CircularProgressIndicator(color: _kPrimary),
+              child: CircularProgressIndicator(color: AppColors.primary),
             );
           }
 
@@ -112,14 +105,18 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.error_outline, color: _kError, size: 52),
+                    const Icon(
+                      Icons.error_outline,
+                      color: AppColors.error,
+                      size: 52,
+                    ),
                     const SizedBox(height: 16),
                     const Text(
                       'Fehler beim Laden',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: _kOnSurface,
+                        color: AppColors.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -128,14 +125,14 @@ class _HomeScreenState extends State<HomeScreen>
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
-                        color: _kOnSurfaceVariant,
+                        color: AppColors.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton.icon(
                       onPressed: _refresh,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: _kPrimary,
+                        backgroundColor: AppColors.primary,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -152,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen>
 
           // Data available
           return RefreshIndicator(
-            color: _kPrimary,
+            color: AppColors.primary,
             onRefresh: _refresh,
             child: ListView(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 80),
@@ -275,7 +272,7 @@ class _LiveHeaderState extends State<_LiveHeader>
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
-                  color: _kOnSurfaceVariant,
+                  color: AppColors.onSurfaceVariant,
                   letterSpacing: 1.0,
                 ),
               ),
@@ -285,7 +282,7 @@ class _LiveHeaderState extends State<_LiveHeader>
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w600,
-                  color: _kOnSurface,
+                  color: AppColors.onSurface,
                 ),
               ),
             ],
@@ -304,7 +301,7 @@ class _LiveHeaderState extends State<_LiveHeader>
                     width: 8,
                     height: 8,
                     decoration: const BoxDecoration(
-                      color: _kPrimary,
+                      color: AppColors.primary,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -315,7 +312,7 @@ class _LiveHeaderState extends State<_LiveHeader>
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
-                    color: _kPrimary,
+                    color: AppColors.primary,
                   ),
                 ),
               ],
@@ -323,7 +320,10 @@ class _LiveHeaderState extends State<_LiveHeader>
             const SizedBox(height: 2),
             Text(
               widget.formatDateTime(widget.lastUpdated),
-              style: const TextStyle(fontSize: 11, color: _kOnSurfaceVariant),
+              style: const TextStyle(
+                fontSize: 11,
+                color: AppColors.onSurfaceVariant,
+              ),
             ),
           ],
         ),

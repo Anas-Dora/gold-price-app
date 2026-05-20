@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-
-const Color _kOutlineVariant = Color(0xFFD0C5B1);
-const Color _kSurfaceContainerLowest = Color(0xFFFFFFFF);
-const Color _kSurfaceContainer = Color(0xFFF5EDE1);
-const Color _kOnSurface = Color(0xFF1F1B14);
-const Color _kOnSurfaceVariant = Color(0xFF4D4637);
-const Color _kError = Color(0xFFBA1A1A);
-const Color _kGreen = Color(0xFF386A1F);
+import '../../../theme/app_colors.dart';
 
 class PriceCard extends StatelessWidget {
   const PriceCard({
@@ -39,9 +32,9 @@ class PriceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _kSurfaceContainerLowest,
+        color: AppColors.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _kOutlineVariant),
+        border: Border.all(color: AppColors.outlineVariant),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -61,11 +54,11 @@ class PriceCard extends StatelessWidget {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: _kSurfaceContainer,
+                  color: AppColors.surfaceContainer,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: _kOutlineVariant),
+                  border: Border.all(color: AppColors.outlineVariant),
                 ),
-                child: Icon(icon, color: _kOnSurfaceVariant, size: 22),
+                child: Icon(icon, color: AppColors.onSurfaceVariant, size: 22),
               ),
               const SizedBox(width: 16),
               Column(
@@ -76,7 +69,7 @@ class PriceCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: _kOnSurface,
+                      color: AppColors.onSurface,
                     ),
                   ),
                   Text(
@@ -84,7 +77,7 @@ class PriceCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w500,
-                      color: _kOnSurfaceVariant,
+                      color: AppColors.onSurfaceVariant,
                       letterSpacing: 0.8,
                     ),
                   ),
@@ -101,7 +94,7 @@ class PriceCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: priceBold ? FontWeight.w700 : FontWeight.w600,
-                  color: _kOnSurface,
+                  color: AppColors.onSurface,
                 ),
               ),
               if (changePercent != null)
@@ -111,7 +104,7 @@ class PriceCard extends StatelessWidget {
                   unit,
                   style: const TextStyle(
                     fontSize: 11,
-                    color: _kOnSurfaceVariant,
+                    color: AppColors.onSurfaceVariant,
                   ),
                 ),
             ],
@@ -130,7 +123,7 @@ class _ChangeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isUp = changePercent >= 0;
-    final color = isUp ? _kGreen : _kError;
+    final color = isUp ? AppColors.green : AppColors.error;
     final sign = isUp ? '+' : '';
     final icon = isUp ? Icons.arrow_upward : Icons.arrow_downward;
 

@@ -36,7 +36,7 @@ class GoldPriceViewModel extends ChangeNotifier {
       // Fetch API and Firebase concurrently
       final results = await Future.wait([
         _api.fetchSpotPrice(),
-        _firestore.fetchGold21k(),
+        _firestore.fetchDataBase(),
       ]);
       _spotRate = results[0] as SpotRate;
       _goldData = results[1] as GoldData;

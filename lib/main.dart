@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'theme/app_colors.dart';
 import 'viewmodels/gold_price_viewmodel.dart';
 import 'views/home_screen.dart';
 
@@ -22,13 +23,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xFF765A00),
-            surface: const Color(0xFFFFF8F1),
+            seedColor: AppColors.primary,
+            surface: AppColors.surface,
           ),
           textSelectionTheme: const TextSelectionThemeData(
-            cursorColor: Color(0xFF765A00),
-            selectionColor: Color(0xFFE3BC58),
-            selectionHandleColor: Color(0xFF765A00),
+            cursorColor: AppColors.primary,
+            selectionColor: AppColors.primaryContainer,
+            selectionHandleColor: AppColors.primary,
           ),
         ),
         home: const HomeScreen(),

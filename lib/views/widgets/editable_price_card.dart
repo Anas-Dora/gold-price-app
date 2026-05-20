@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-
-const Color _kPrimary = Color(0xFF765A00);
-const Color _kPrimaryContainer = Color(0xFFE3BC58);
-const Color _kOnPrimaryContainer = Color(0xFF634B00);
-const Color _kSurfaceContainerLowest = Color(0xFFFFFFFF);
-const Color _kSurfaceContainer = Color(0xFFF5EDE1);
-const Color _kOnSurface = Color(0xFF1F1B14);
-const Color _kOnSurfaceVariant = Color(0xFF4D4637);
-const Color _kOutline = Color(0xFF7F7665);
+import '../../../theme/app_colors.dart';
 
 class EditablePriceCard extends StatefulWidget {
   const EditablePriceCard({
@@ -84,9 +76,9 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _kSurfaceContainerLowest,
+        color: AppColors.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _kPrimaryContainer, width: 2),
+        border: Border.all(color: AppColors.primaryContainer, width: 2),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.07),
@@ -107,12 +99,12 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: _kPrimaryContainer,
+                  color: AppColors.primaryContainer,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
                   Icons.workspace_premium,
-                  color: _kOnPrimaryContainer,
+                  color: AppColors.onPrimaryContainer,
                   size: 24,
                 ),
               ),
@@ -126,7 +118,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: _kOnSurface,
+                        color: AppColors.onSurface,
                       ),
                     ),
                     Text(
@@ -134,7 +126,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
                       style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
-                        color: _kOnSurfaceVariant,
+                        color: AppColors.onSurfaceVariant,
                         letterSpacing: 0.8,
                       ),
                     ),
@@ -142,47 +134,21 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
                 ),
               ),
               // Badge + edit button stacked on the right
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 3,
-                    ),
-                    decoration: BoxDecoration(
-                      color: _kPrimaryContainer,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Text(
-                      'POPULÄR',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        color: _kOnPrimaryContainer,
-                      ),
-                    ),
+              GestureDetector(
+                onTap: _isEditing ? null : _toggleEdit,
+                child: Container(
+                  width: 46,
+                  height: 46,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.surfaceContainer,
                   ),
-                  const SizedBox(height: 4),
-                  GestureDetector(
-                    onTap: _isEditing ? null : _toggleEdit,
-                    child: Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _kSurfaceContainer,
-                      ),
-                      child: Icon(
-                        _isEditing
-                            ? Icons.edit_off_outlined
-                            : Icons.edit_outlined,
-                        color: _kPrimary,
-                        size: 18,
-                      ),
-                    ),
+                  child: Icon(
+                    _isEditing ? Icons.edit_off_outlined : Icons.edit_outlined,
+                    color: AppColors.primary,
+                    size: 24,
                   ),
-                ],
+                ),
               ),
             ],
           ),
@@ -205,13 +171,16 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
           style: const TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.w700,
-            color: _kPrimary,
+            color: AppColors.primary,
             letterSpacing: -0.5,
           ),
         ),
         Text(
           widget.unit,
-          style: const TextStyle(fontSize: 11, color: _kOnSurfaceVariant),
+          style: const TextStyle(
+            fontSize: 11,
+            color: AppColors.onSurfaceVariant,
+          ),
         ),
       ],
     );
@@ -233,15 +202,15 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
               style: const TextStyle(
                 fontSize: 42,
                 fontWeight: FontWeight.w700,
-                color: _kPrimary,
+                color: AppColors.primary,
               ),
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: _kPrimary, width: 2),
+                  borderSide: BorderSide(color: AppColors.primary, width: 2),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: _kPrimary, width: 2),
+                  borderSide: BorderSide(color: AppColors.primary, width: 2),
                 ),
                 contentPadding: EdgeInsets.only(bottom: 4, right: 28),
                 hintText: '0,00',
@@ -252,7 +221,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
               child: Text(
                 '€',
                 style: TextStyle(
-                  color: _kPrimary,
+                  color: AppColors.primary,
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
                 ),
@@ -267,7 +236,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
               child: OutlinedButton(
                 onPressed: _isSaving ? null : _toggleEdit,
                 style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: _kOutline),
+                  side: const BorderSide(color: AppColors.outline),
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -276,7 +245,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
                 child: const Text(
                   'Abbrechen',
                   style: TextStyle(
-                    color: _kOnSurfaceVariant,
+                    color: AppColors.onSurfaceVariant,
                     fontWeight: FontWeight.w700,
                     fontSize: 12,
                   ),
@@ -288,7 +257,7 @@ class _EditablePriceCardState extends State<EditablePriceCard> {
               child: ElevatedButton(
                 onPressed: _isSaving ? null : _savePrice,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: _kPrimary,
+                  backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   elevation: 1,
